@@ -1,36 +1,33 @@
-# package
+# LavaCord-tracks
 
-Node.js NPM package template.  
-Includes: StandardJS linting, ESM, JSDoc  
-GitHub Actions set up:
-
-- On every commit the package is linted with standard and **automatically fixed if possible**.
-- It also checks if the version in package.json has changed, if yes then uploads to NPM.
-
-TODO: Setup the repo
-
-- Generate an npm secret: `npm token create`
-- Go to https://github.com/user/repo/settings/secrets/new
-- Add `npm_token` with the value you generated above
-- Go to https://github.com/user/repo/settings and enable GitHub pages in ./docs
+Gets tracks from lavacord
 
 ### Installation
 
-TODO: Provide your own install instructions
-
 ```bash
-npm install your-library # or yarn add your-library
+npm install @dada513/lavacord-tracks # or yarn add @dada513/lavacord-tracks
 ```
 
 ### Usage
 
 ```js
-// TODO: Provide example code
-const myPackage = require("package");
-myPackage.doStuff();
+const { Manager } = require("lavacord");
+const tracks = require("@dada513/lavacord-tracks");
+const Discord = require("discord.js");
+const client = new Discord.Client();
+
+client.once("ready", async () => {
+  const nodes = [
+    { id: "1", host: "localhost", port: 2333, password: "youshallnotpass" },
+  ];
+  const manager = new Manager(client, nodes);
+  await manager.connect();
+  await tracks.getSongs("ytsearch: hello there"); // Array<>
+});
+
+client.login(token);
 ```
 
 ### API
 
-TODO: Provide an acutal JSDoc URL  
-The JSDoc can be accessed at https://dada513.github.io/package/
+The JSDoc can be accessed at https://dada513.github.io/lavacord-tracks/
