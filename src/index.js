@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 /**
  * See {@link https://lavacord.github.io/Lavacord/classes/lavalinknode.html}
@@ -35,11 +35,11 @@ import axios from "axios";
 export const getSongs = async (query, node) => {
   const res = await axios.get(`http://${node.host}:${node.port}/loadtracks`, {
     headers: {
-      Authorization: node.password,
+      Authorization: node.password
     },
     params: {
-      identifier: query,
-    },
-  });
-  return res.data.tracks;
-};
+      identifier: query
+    }
+  })
+  return res.data.tracks
+}
